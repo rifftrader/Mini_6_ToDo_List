@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue To Do List</title>
+
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Local external CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- Add Font Awesome -->
+    <script src="https://kit.fontawesome.com/7380f8cd25.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<div id="app" class="container">
+
+    <h1 class="jumbotron">Yet Another Useless To Do List</h1>
+
+    <div class="row data">
+
+        <div class="input-group">
+            <input class="form-control"
+                   type="text" name="toDoEntry"
+                   v-model="newItem"
+                   v-on:keydown.enter="addNewItem"
+                   placeholder="Type new to do item here. Press enter to add to list.">
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <button class="btn btn-light toggle-button"
+                type="button"
+                name="button"
+                v-on:click="showCurrent = !showCurrent">
+            {{ toggleTextUpdate }}
+        </button>
+
+    </div>
+
+    <div class="container" v-show="showCurrent === true">
+
+        <h3>Current Tasks</h3>
+
+        <div class="row button-row">
+
+            <div class="col button-row">
+                <button class="btn btn-light action-button"
+                        type="button"
+                        name="button"
+                        v-on:click="completeAll()">
+                    <i class="complete-icon fas fa-check-circle icon-1"></i> Complete All
+                </button>
+            </div>
+
+            <div class="col button-row button-right">
+                <button class="btn btn-light action-button"
+                        type="button"
+                        name="button"
+                        v-on:click="deleteAll()">
+                    <i class="delete-icon fas fa-trash-alt icon-3"></i> Delete All
+                </button>
+            </div>
+
+        </div>
+
+        <p v-show="showStatusUpdate === true">{{ statusUpdate }}</p>
+
+        <ul class="list-group current-items" v-show="showStatusUpdate === false">
+
+            <li class=" list-group-item d-flex justify-content-between"
+                v-for="(item, index) in listItems"
+                :key="item">
+
+                <div class="col-0.5">
+                    <button class=" btn btn-outline-success btn-sm" type="button" name="markAsDone"
+                            v-on:click="itemCompleted(index)">
+                        <i class="fas fa-check-circle icon-1"></i>
+                    </button>
+                </div>
+
+                <div class="col span-container">
+                    <span class="item-description">{{ item }}</span>
+                </div>
+
+                <div class="col-0.5">
+                    <button class="btn btn-outline-danger btn-sm" type="button" name="delete"
+                            v-on:click="deleteItem(index)">
+                        <i class="fas fa-trash-alt icon-3"></i>
+                    </button>
+                </div>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="container" v-show="showCurrent == false">
+
+        <h3>Completed Tasks</h3>
+
+        <div class="row button-row">
+
+            <div class="col button-row button-right">
+                <button class="btn btn-light action-button"
+                        type="button"
+                        name="button"
+                        v-on:click="clearComplete()">
+                    <i class="delete-icon fas fa-trash-alt icon-3"></i> Clear All Completed
+                </button>
+            </div>
+
+        </div>
+
+        <p v-show="completedItems.length == 0">No completed tasks to display.</p>
+
+        <ul class="list-group completed-items">
+
+            <li class="list-group-item d-flex justify-content-between" v-for="(completedItem, index) in completedItems"
+                :key="completedItem">
+                <span>{{ completedItem }}</span>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>

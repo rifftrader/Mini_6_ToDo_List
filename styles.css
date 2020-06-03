@@ -1,0 +1,80 @@
+body {
+    background-color: #e9ecef;
+}
+
+h3 {
+    margin: 20px 0;
+}
+
+li {
+    margin: 0;
+}
+
+.item-description {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+p {
+    margin-top: 40px;
+}
+.row {
+    padding: 2px;
+    margin: 10px;
+}
+
+.markDone {
+    text-decoration: line-through;
+}
+
+.container {
+    background-color: #e9ecef;
+}
+
+.btn-light {
+    background-color: #e9ecef;
+    margin: 20px 0;
+}
+
+.icon-1 {
+    padding: 0 2px;
+}
+
+.icon-3 {
+    padding: 0 2px;
+}
+
+.toggle-button {
+    width: 270px;
+}
+
+.input-group {
+    margin: -20px 0 20px 0;
+}
+
+.delete-icon {
+    color: #dd3444;
+}
+
+.complete-icon {
+    color: #28a745;
+}
+
+.edit-field {
+    height: 31px;
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+}
+
+.button-row {
+    margin: 0;
+    padding: 0;
+}
+
+.button-right {
+    text-align: right;
+}
+
+.action-button {
+    width: 270px;
+}
